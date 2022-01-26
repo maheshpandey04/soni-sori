@@ -136,7 +136,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun updateState(it: ProfileViewState) {
-        mBinding.appVersionValue.text = it.appVersionText
+//        mBinding.appVersionValue.text = it.appVersionText
 
         it.userName?.let {
             mBinding.tvName.setText(it)
@@ -145,7 +145,7 @@ class ProfileActivity : AppCompatActivity() {
 
         it.userEmail?.let {
             mBinding.tvEmail.setText(it)
-            mBinding.tvEmail.setSelection(it.length)
+//            mBinding.tvEmail.setSelection(it.length)
         }
 
         if (it.savedFiles.isEmpty()) {
@@ -164,14 +164,14 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         if (it.showEditProfileLayout) {
-            mBinding.tvEmail.setBackgroundResource(R.drawable.bg_profile_edit_text)
+//            mBinding.tvEmail.setBackgroundResource(R.drawable.bg_profile_edit_text)
             mBinding.tvEmail.isFocusable = true
             mBinding.tvEmail.isFocusableInTouchMode = true
             mBinding.tvName.setBackgroundResource(R.drawable.bg_profile_edit_text)
             mBinding.tvName.isFocusable = true
             mBinding.tvName.isFocusableInTouchMode = true
             mBinding.tvName.requestFocus()
-            mBinding.btnEdit.text = getString(R.string.save)
+//            mBinding.btnEdit.text = getString(R.string.save)
             mBinding.btnEdit.setOnClickListener {
                 viewModel.handle(
                     ProfileViewActions.UpdateProfile(
@@ -185,7 +185,7 @@ class ProfileActivity : AppCompatActivity() {
             mBinding.tvEmail.isFocusable = false
             mBinding.tvName.background = null
             mBinding.tvName.isFocusable = false
-            mBinding.btnEdit.text = getString(R.string.edit)
+//            mBinding.btnEdit.text= getString(R.string.edit)
             mBinding.btnEdit.setOnClickListener {
                 viewModel.handle(ProfileViewActions.EditProfileClicked)
             }

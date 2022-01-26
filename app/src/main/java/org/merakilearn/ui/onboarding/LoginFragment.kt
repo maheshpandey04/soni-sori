@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.merakilearn.MainActivity
 import org.merakilearn.R
@@ -60,12 +61,13 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initGoogleSignInOption()
-        mBinding.tvLogin.setOnClickListener {
+        mBinding.loginWithGoogle.setOnClickListener {
             showConfirmation()
         }
 
-        mBinding.tvCreateAccount.setOnClickListener {
-            signIn()
+        mBinding.skipLogin.setOnClickListener {
+            MainActivity.launch(requireContext())
+
         }
     }
 
