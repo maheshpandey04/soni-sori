@@ -28,6 +28,7 @@ data class EnrollActivityArgs(
 ) : Parcelable
 
 class EnrollActivity : AppCompatActivity() {
+    private val RC_SIGN_IN = 9001
 
     companion object {
         private const val ENROLL_ACTIVITY_ARGS = "enroll_activity_args"
@@ -98,7 +99,11 @@ class EnrollActivity : AppCompatActivity() {
         })
 
         primary_action.setOnClickListener {
-            viewModel.handle(EnrollViewActions.PrimaryAction)
+            if (userRepo.isFakeLogin())
+                OnBoardingActivity.showLoginScreen(this)
+
+            else
+                viewModel.handle(EnrollViewActions.PrimaryAction)
         }
 
         initToolBar()
